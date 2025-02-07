@@ -9,7 +9,8 @@ using Amazon.Lambda.Serialization.SystemTextJson;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.TestTool.Processes;
 using Amazon.Lambda.TestTool.Commands.Settings;
-using Amazon.Lambda.TestTool.UnitTests.Helpers;
+using Amazon.Lambda.TestTool.Tests.Common.Helpers;
+using Amazon.Lambda.TestTool.Tests.Common.Retries;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using Environment = System.Environment;
@@ -18,11 +19,7 @@ namespace Amazon.Lambda.TestTool.UnitTests;
 
 public class RuntimeApiTests
 {
-#if DEBUG
-    [Fact]
-#else
-    [Fact(Skip = "Skipping this test as it is not working properly.")]
-#endif
+    [RetryFact]
     public async Task AddEventToDataStore()
     {
         const string functionName = "FunctionFoo";
@@ -75,11 +72,7 @@ public class RuntimeApiTests
         }
     }
 
-#if DEBUG
-    [Fact]
-#else
-    [Fact(Skip = "Skipping this test as it is not working properly.")]
-#endif
+    [RetryFact]
     public async Task InvokeRequestResponse()
     {
         const string functionName = "FunctionFoo";
@@ -133,7 +126,6 @@ public class RuntimeApiTests
         {
             await cancellationTokenSource.CancelAsync();
         }
-
     }
 
     private IAmazonLambda ConstructLambdaServiceClient(string url)

@@ -7,9 +7,9 @@ using Amazon.Lambda.TestTool.Models;
 using Amazon.Lambda.TestTool.Services;
 using Spectre.Console.Cli;
 using Moq;
-using Amazon.Lambda.TestTool.UnitTests.Helpers;
 using Xunit;
 using Amazon.Lambda.TestTool.Services.IO;
+using Amazon.Lambda.TestTool.Tests.Common.Helpers;
 using Amazon.Lambda.TestTool.Utilities;
 using System.Text.Json.Nodes;
 
