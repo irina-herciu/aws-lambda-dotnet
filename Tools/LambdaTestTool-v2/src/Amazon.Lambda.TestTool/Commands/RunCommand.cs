@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 using System.Diagnostics;
+using System.Text.Json;
 using Amazon.Lambda.TestTool.Commands.Settings;
 using Amazon.Lambda.TestTool.Extensions;
 using Amazon.Lambda.TestTool.Models;
@@ -65,7 +66,7 @@ public sealed class RunCommand(
             {
                 if (settings.ApiGatewayEmulatorMode is null)
                 {
-                    throw new ArgumentException("When --api-gateway-emulator-port is set the --api-gateway-mode must be set to configure the mode for the API Gateway emulator.");
+                    throw new ArgumentException("When --api-gateway-emulator-port is set the --api-gateway-emulator-mode must be set to configure the mode for the API Gateway emulator.");
                 }
 
                 var apiGatewayEmulatorProcess =
